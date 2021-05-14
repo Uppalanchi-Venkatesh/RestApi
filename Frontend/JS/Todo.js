@@ -1,4 +1,5 @@
-(function showTodo() {
+showTodo();
+function showTodo() {
     fetch('https://venkat-todo-app.herokuapp.com/api/todos')
         .then(res => {
             return res.json();
@@ -25,4 +26,4 @@
             });
         })
         .catch(err => console.error("Error occurred " + err));
-})();
+}
