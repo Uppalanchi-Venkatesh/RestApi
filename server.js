@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors'); 
-const LocalStorage = require('node-localstorage').LocalStorage;
-const localStorage = new LocalStorage('./Localstorage');
+//const LocalStorage = require('node-localstorage').LocalStorage;
+//const localStorage = new LocalStorage('./Localstorage');
 var todoList=[];
 
 app.set('view engine','ejs');
@@ -23,21 +23,12 @@ app.get('/todo', (req,res) => {
 });
 
 app.post('/todo', (req,res) => {
-    const todo = req.body.todo;
-    todoList=[];
-    for(let i=0;i<localStorage.length;i++) 
-        todoList.push(localStorage.getItem(i.toString()));
+    let todo = req.body.todo;
     todoList.push(todo);
-    localStorage.clear();
-    for(let i=0;i<todoList.length;i++)
-        localStorage.setItem(i.toString(),todoList[i]);
     res.redirect('/todo');
 });
 
 app.get('/api/todos', (req,res) => {
-    todoList=[];
-    for(let i=0;i<localStorage.length;i++)
-        todoList.push(localStorage.getItem(i.toString()));
     const myobj = {
         status: "ok",
         result: todoList
@@ -46,18 +37,7 @@ app.get('/api/todos', (req,res) => {
 });
 
 app.delete('/api/todos/:id', (req,res) => {
-    todoList=[];
-    for(let i=0;i<localStorage.length;i++)
-        todoList.push(localStorage.getItem(i.toString()));
     todoList.splice(parseInt(req.params.id),1);
-    localStorage.clear();
-    for(let i=0;i<todoList.length;i++)
-        localStorage.setItem(i.toString(),todoList[i]);
-    const myobj = {
-        status: "ok",
-        result: todoList
-    }
-    res.end(JSON.stringify(myobj));
 });
 
 const port = process.env.PORT || 3000;

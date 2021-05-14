@@ -10,12 +10,10 @@
         <div class="inside-box">
             <div class="title">Todo List</div>
             <form action="/todo" method="POST" class="add-text">
-                <input type="text" placeholder="Todo task" name="todo" id="textbox">
-                <input type="submit" value="Add" class="button">
+                <input required type="text" placeholder="Todo task" name="todo" id="textbox">
+                <input onclick="showTodo()" type="submit" value="Add" class="button">
             </form>
-            <div id="todo-list">
-                
-            </div>
+            <div id="todo-list"></div>
         </div>
     </div>    
     <%- include('./Partials/ScriptLinks') %>
