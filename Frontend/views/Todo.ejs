@@ -9,7 +9,7 @@
     <div class="container1">
         <div class="inside-box">
             <div class="title">Todo List</div>
-            <form class="add-text">
+            <form action="/todo" method="POST" class="add-text">
                 <input type="text" placeholder="Todo task" name="todo" id="textbox">
                 <input type="submit" value="Add" class="button">
             </form>
@@ -19,5 +19,6 @@
         </div>
     </div>    
     <%- include('./Partials/ScriptLinks') %>
+    <script src="../JS/Todo.js"></script>
 </body>
 </html>
