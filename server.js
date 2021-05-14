@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const cors = require('cors'); 
 const LocalStorage = require('node-localstorage').LocalStorage;
 const localStorage = new LocalStorage('./Localstorage');
 var todoList=[];
@@ -11,6 +12,7 @@ app.set('views', path.join(__dirname, 'Frontend', 'views'));
 app.use(express.static(__dirname+'/Frontend'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req,res) => {
     res.render('Home', {title: 'Homepage'});
@@ -36,7 +38,11 @@ app.get('/api/todos', (req,res) => {
     todoList=[];
     for(let i=0;i<localStorage.length;i++)
         todoList.push(localStorage.getItem(i.toString()));
-    res.send(todoList);
+    const myobj = {
+        status: "ok",
+        result: todoList
+    }
+    res.end(JSON.stringify(myobj));
 });
 
 app.delete('/api/todos/:id', (req,res) => {
@@ -47,7 +53,11 @@ app.delete('/api/todos/:id', (req,res) => {
     localStorage.clear();
     for(let i=0;i<todoList.length;i++)
         localStorage.setItem(i.toString(),todoList[i]);
-    return res.send(todoList);
+    const myobj = {
+        status: "ok",
+        result: todoList
+    }
+    res.end(JSON.stringify(myobj));
 });
 
 const port = process.env.PORT || 3000;
