@@ -22,6 +22,10 @@ app.get('/todo', (req,res) => {
     res.render('Todo', {title: 'Todo'});
 });
 
+app.get('/tambola', (req,res) => {
+    res.render('Tambola', {title: 'Tambola'});
+});
+
 app.post('/todo', (req,res) => {
     let todo = req.body.todo;
     todoList.push(todo);

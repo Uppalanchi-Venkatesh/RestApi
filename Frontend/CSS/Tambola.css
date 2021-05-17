@@ -1,0 +1,46 @@
+body{
+    background-color: lightblue;
+}
+
+h1{
+    text-align: center;
+}
+
+.table2{
+    border: 2px solid black;
+    width: 500px;
+    height: 270px; 
+    margin-left: 425px; 
+}
+th,td{
+    background-color: white;
+    height: 40;
+    width: 50;
+    text-align: center;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 20;
+}
+
+#rcorners1 {
+    background-color: white;
+    float: left;
+    font-size: 60;
+    border-radius: 15px;
+    border: 2px solid black; 
+    padding: 35;
+    width: 150px;
+    height: 150px;  
+    margin-left: 460;
+  }
+
+#rcorners2 {
+    background-color: white;
+    font-size: 60;
+    border-radius: 15px;
+    border: 2px solid black; 
+    padding: 35;
+    width: 150px !important;
+    height: 150px !important;  
+    margin-left: 740;
+}

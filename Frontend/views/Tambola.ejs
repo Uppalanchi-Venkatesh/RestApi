@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('./Partials/StyleLinks') %>
+        <link type="text/css" rel="stylesheet" href="../CSS/Tambola.css">
+    </head>
+
+    <body>
+        <h1><u>Welcome To Online Games</h1></u><br>
+        <div>
+        <div style="float: left;"><h3 style="margin-left: 430;">Current Number</h3></div>
+        <div><h3 style="margin-left: 710;">Previous Number</h3></div>
+        </div>
+        <span>
+        <h1><p id="rcorners1"></p></h1>
+        <h1><p id="rcorners2"></p></h1>
+        </span><br>
+        <div style="text-align: center;">
+        <button onclick="generateNum()"><b>Genarate Number</b></button>
+        <button onclick="clearboard()"><b>Clear Board</b></button>
+        </div><br><br>
+
+        <table class="table2">
+            <tr>  <td id="n1"></td> <td id="n2"></td> <td id="n3"></td> <td id="n4"></td> <td id="n5"></td> <td id="n6"></td> <td id="n7"></td> <td id="n8"></td> <td id="n9"></td> <td id="n10"></td> </tr>
+            <tr>  <td id="n11"></td> <td id="n12"></td> <td id="n13"></td> <td id="n14"></td> <td id="n15"></td> <td id="n16"></td> <td id="n17"></td> <td id="n18"></td> <td id="n19"></td> <td id="n20"></td> </tr>
+            <tr>  <td id="n21"></td> <td id="n22"></td> <td id="n23"></td> <td id="n24"></td> <td id="n25"></td> <td id="n26"></td> <td id="n27"></td> <td id="n28"></td> <td id="n29"></td> <td id="n30"></td> </tr>
+            <tr>  <td id="n31"></td> <td id="n32"></td> <td id="n33"></td> <td id="n34"></td> <td id="n35"></td> <td id="n36"></td> <td id="n37"></td> <td id="n38"></td> <td id="n39"></td> <td id="n40"></td> </tr>
+            <tr>  <td id="n41"></td> <td id="n42"></td> <td id="n43"></td> <td id="n44"></td> <td id="n45"></td> <td id="n46"></td> <td id="n47"></td> <td id="n48"></td> <td id="n49"></td> <td id="n50"></td> </tr>
+            <tr>  <td id="n51"></td> <td id="n52"></td> <td id="n53"></td> <td id="n54"></td> <td id="n55"></td> <td id="n56"></td> <td id="n57"></td> <td id="n58"></td> <td id="n59"></td> <td id="n60"></td> </tr>
+            <tr>  <td id="n61"></td> <td id="n62"></td> <td id="n63"></td> <td id="n64"></td> <td id="n65"></td> <td id="n66"></td> <td id="n67"></td> <td id="n68"></td> <td id="n69"></td> <td id="n70"></td> </tr>
+            <tr>  <td id="n71"></td> <td id="n72"></td> <td id="n73"></td> <td id="n74"></td> <td id="n75"></td> <td id="n76"></td> <td id="n77"></td> <td id="n78"></td> <td id="n79"></td> <td id="n80"></td> </tr>
+            <tr>  <td id="n81"></td> <td id="n82"></td> <td id="n83"></td> <td id="n84"></td> <td id="n85"></td> <td id="n86"></td> <td id="n87"></td> <td id="n88"></td> <td id="n89"></td> <td id="n90"></td> </tr>
+        </table>
+        <br><br>
+        <a href="/"><button>home page</button></a><br><br>
+        <br><br>
+        
+        <%- include('./Partials/ScriptLinks') %>
+        <script src="../JS/Tambola.js"></script>
+    </body>
+</html>
