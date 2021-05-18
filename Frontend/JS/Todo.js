@@ -1,6 +1,6 @@
 showTodo();
 function showTodo() {
-    fetch('https://venkat-todo-app.herokuapp.com/api/todos')
+    fetch(`http://localhost:3000/api/todos`)
         .then(res => {
             return res.json();
         })
@@ -8,25 +8,24 @@ function showTodo() {
             var maindiv = document.getElementById('todo-list');
             maindiv.innerHTML='';
             var mylist = data.result;
-            console.log(mylist);
             mylist.forEach((element,index) => {
                 let div = document.createElement("DIV");
                 maindiv.appendChild(div);
                 div.classList.add('lists');
                 div.innerHTML = element;
-                let button = document.createElement("BUTTON");
-                button.appendChild(document.createTextNode('Delete'));
-                button.setAttribute("class","btn btn-sm btn-outline-danger py-0");
-                button.style.cssText = 'float:right;margin-top:8px';
-                div.appendChild(button);
+                let del = document.createElement("BUTTON");
+                del.appendChild(document.createTextNode('Delete'));
+                del.setAttribute("class","btn btn-sm btn-outline-danger py-0");
+                del.style.cssText = 'float:right;margin-top:8px';
+                div.appendChild(del);
                 let edit = document.createElement("BUTTON");
                 edit.appendChild(document.createTextNode('Edit'));
                 edit.setAttribute("class","btn btn-sm btn-outline-primary py-0");
                 edit.style.cssText = 'float:right;margin-top:8px;';
                 div.appendChild(edit);
-                button.addEventListener('click', () => {
+                del.addEventListener('click', () => {
                     maindiv.removeChild(maindiv.childNodes[index]);
-                    fetch(`https://venkat-todo-app.herokuapp.com/api/todos/${index}`, {method: 'DELETE'});
+                    fetch(`http://localhost:3000/api/todos/${index}`, {method: 'DELETE'});
                     showTodo();
                 });
                 edit.addEventListener('click', () => {
@@ -35,19 +34,18 @@ function showTodo() {
                     posting.style.display = 'none';
                     updating.style.display = 'flex';
                     document.getElementById('textbox1').value = mylist[index];
-                });
-                let save = document.getElementById('savetodo');
-                save.addEventListener('click', () => {
-                    let todo = document.getElementById('textbox1').value;
-                    console.log('Getting toto : ' +todo);
-                    fetch(`https://venkat-todo-app.herokuapp.com/api/todos/${index}`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-type': 'charset=UTF-8' 
-                        },
-                        body: JSON.stringify(todo)
+                    let save = document.getElementById('savetodo');
+                    save.addEventListener('click', (event) => {
+                        let todo = {todo1: document.getElementById('textbox1').value};
+                        fetch(`http://localhost:3000/api/todos/${index}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-type': 'application/json;charset=UTF-8' 
+                            },
+                            body: JSON.stringify(todo)
+                        });
+                        showTodo();
                     });
-                    showTodo();
                 });
             });
         })

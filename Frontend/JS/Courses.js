@@ -12,7 +12,7 @@ add.addEventListener('click', () => {
 });
 
 function showCourses() {
-    fetch(`https://venkat-todo-app.herokuapp.com/api/courses`)
+    fetch(`http://localhost:3000/api/courses`)
         .then(res => {
             return res.json();
         })

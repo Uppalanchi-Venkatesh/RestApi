@@ -74,8 +74,6 @@ app.delete('/api/todos/:id', (req,res) => {
 app.patch('/api/todos/:id', (req,res) => {
     let updatedTodo = req.body.todo1;
     todoList[parseInt(req.params.id)] = updatedTodo;
-    console.log("UpdatedTodo : " + updatedTodo);
-    res.redirect('/todo');
 });
 
 const port = process.env.PORT || 3000;
