@@ -1,6 +1,6 @@
 showTodo();
 function showTodo() {
-    fetch(`http://localhost:3000/api/todos`)
+    fetch(`https://bz-crud-operations.herokuapp.com/api/todos`)
         .then(res => {
             return res.json();
         })
@@ -25,7 +25,7 @@ function showTodo() {
                 div.appendChild(edit);
                 del.addEventListener('click', () => {
                     maindiv.removeChild(maindiv.childNodes[index]);
-                    fetch(`http://localhost:3000/api/todos/${index}`, {method: 'DELETE'});
+                    fetch(`https://bz-crud-operations.herokuapp.com/api/todos/${index}`, {method: 'DELETE'});
                     showTodo();
                 });
                 edit.addEventListener('click', () => {
@@ -37,7 +37,7 @@ function showTodo() {
                     let save = document.getElementById('savetodo');
                     save.addEventListener('click', (event) => {
                         let todo = {todo1: document.getElementById('textbox1').value};
-                        fetch(`http://localhost:3000/api/todos/${index}`, {
+                        fetch(`https://bz-crud-operations.herokuapp.com/api/todos/${index}`, {
                             method: 'PATCH',
                             headers: {
                                 'Content-type': 'application/json;charset=UTF-8' 

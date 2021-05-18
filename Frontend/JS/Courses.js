@@ -12,7 +12,7 @@ add.addEventListener('click', () => {
 });
 
 function showCourses() {
-    fetch(`http://localhost:3000/api/courses`)
+    fetch(`https://bz-crud-operations.herokuapp.com/api/courses`)
         .then(res => {
             return res.json();
         })
