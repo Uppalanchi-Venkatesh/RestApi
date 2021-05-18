@@ -9,9 +9,13 @@
     <div class="container1">
         <div class="inside-box">
             <div class="title">Todo List</div>
-            <form action="/todo" method="POST" class="add-text">
+            <form action="/todo" method="POST" class="add-text" id="posting">
                 <input required type="text" placeholder="Todo task" name="todo" id="textbox">
                 <input onclick="showTodo()" type="submit" value="Add" class="button">
+            </form>
+            <form class="add-text" id="updating">
+                <input required type="text" placeholder="Todo task" name="todo1" id="textbox1">
+                <input type="submit" value="Save" class="button1" id="savetodo">
             </form>
             <div id="todo-list"></div>
         </div>
