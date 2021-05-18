@@ -18,6 +18,7 @@ function showCourses() {
         })
         .then(data => {
             const tbody = document.getElementById('tests-table');
+            tbody.innerHTML = '';
             for(let course of data) {
                 if(!course.isdeleted) {
                     let tr = document.createElement('tr');
