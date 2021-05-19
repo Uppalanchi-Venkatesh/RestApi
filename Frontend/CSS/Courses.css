@@ -1,0 +1,18 @@
+.hidden { 
+    display: none; 
+}
+
+.result { 
+    max-width: 80px; 
+}
+
+.flexx {
+    display: flex;
+    gap: 10px;
+}
+
+.size {
+    width: 50px;
+    height: 25px;
+    padding: 0px;
+}

@@ -10,7 +10,12 @@ const DBString = process.env.CONNECTION_STRING;
 //const localStorage = new LocalStorage('./Localstorage');
 var todoList=[];
 
-mongoose.connect(DBString,{useNewUrlParser: true, useUnifiedTopology: true}).catch(err => console.log(err));
+mongoose.connect(DBString, {
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+}).catch(err => console.log(err));
 
 mongoose.connection.on('connected', () => {
     console.log('connected to DB');
@@ -40,12 +45,6 @@ app.get('/courses', (req,res) => {
     res.render('Courses', {title: 'Courses'});
 });
 
-app.post('/todo', (req,res) => {
-    let todo = req.body.todo;
-    todoList.push(todo);
-    res.redirect('/todo');
-});
-
 app.post('/courses', (req,res) => {
     let course = new model(req.body);
     course.save() .catch(err => console.error(err));
@@ -57,6 +56,27 @@ app.get('/api/courses', (req,res) => {
         if(err) console.error(err);
         else res.send(courses);
     });
+});
+
+app.delete('/api/courses/:id', (req,res) => {
+    model.findByIdAndUpdate(req.params.id, {isdeleted: true}, (err,course) => {
+        if(err) console.error(err);
+        else console.log(JSON.stringify(course));
+    });
+});
+
+app.patch('/api/courses/:id', (req,res) => {
+    let article = req.body.article;
+    model.findOne({_id: req.params.id}, (err,course) => {
+        if(err) console.error(err);
+        else course.articles = articles;
+    });
+});
+
+app.post('/todo', (req,res) => {
+    let todo = req.body.todo;
+    todoList.push(todo);
+    res.redirect('/todo');
 });
 
 app.get('/api/todos', (req,res) => {
