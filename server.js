@@ -2,24 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const cors = require('cors');
-const mongoose = require('mongoose'); 
+const DB = require('./Backend/Database/DBConnection'); 
 const model = require('./Backend/Model/Course');
 require('dotenv').config();
-const DBString = process.env.CONNECTION_STRING;
+DB.connect();
 //const LocalStorage = require('node-localstorage').LocalStorage;
 //const localStorage = new LocalStorage('./Localstorage');
 var todoList=[];
-
-mongoose.connect(DBString, {
-    useFindAndModify: false,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-}).catch(err => console.log(err));
-
-mongoose.connection.on('connected', () => {
-    console.log('connected to DB');
-});
 
 app.set('view engine','ejs');
 app.set('views', path.join(__dirname, 'Frontend', 'views'));
